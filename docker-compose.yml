@@ -1,8 +1,8 @@
-version:  "3.7"
+version: "3.7"
 
-services: 
-  db: 
-    build: 
+services:
+  db:
+    build:
       context: .
       dockerfile: Dockerfile
     image: github.com/crislerwin/go-api
@@ -10,14 +10,14 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "25432: 5432"
+      - "25432:5432"
     environment:
-      POSTGRES_DB: bookstore
+      POSTGRES_DB: books
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: 123456
-      PGDATA: /var/lib/postgresql/data
+      PGDATA: /var/lib/postgresql/data/go-api
     volumes:
-      - go-api: /var/lib/postgresql/data
+      - go-api:/var/lib/postgresql/data
 
- volumes: 
+volumes:
   go-api:
